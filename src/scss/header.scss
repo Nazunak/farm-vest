@@ -19,6 +19,17 @@
   &__logo {
     position: relative;
     z-index: 3;
+    color: $mainColor;
+    font-family: $fontSecond;
+    @include adaptiveValue("font-size", 36, 32);
+    font-weight: 500;
+    line-height: math.div(43, 36);
+    transition: color 0.3s;
+    @media (any-hover: hover) {
+      &:hover {
+        color: $greenColor;
+      }
+    }
   }
 
   &__menu {
@@ -27,31 +38,43 @@
   &__actions {
     display: flex;
     align-items: center;
-    gap: toRem(15);
+    @include adaptiveValue("gap", 16, 5);
   }
 
   &__button {
     display: flex;
-    padding: toRem(16) toRem(24);
+    padding: toRem(13) toRem(25);
     justify-content: center;
     align-items: center;
-    border: toRem(1) solid #f1f1f1;
-    border-radius: toRem(8);
-    font-size: toRem(14);
-    line-height: math.div(15, 14);
+    background-color: $greenColor;
+    // border: toRem(1) solid #f1f1f1;
+    border-radius: toRem(10);
+    font-size: toRem(18);
+    line-height: math.div(22, 18);
     transition: all 0.3s;
     position: relative;
     z-index: 5;
     &:hover {
-      background-color: $purpurColor;
+      background-color: #61d161;
       color: #fff;
     }
+    &_trans {
+      background-color: $backgroundColor;
+      border: toRem(1) solid #f1f1f1;
+      @media (any-hover: hover) {
+        &:hover {
+          background-color: $greenColor;
+        }
+      }
+    }
     @media (max-width: $mobile) {
-      background-color: #fff;
+      background-color: #ffffff;
+      color: $backgroundColor;
       padding: toRem(10) toRem(15);
     }
   }
 }
+
 .menu {
   &__icon {
   }
@@ -64,7 +87,7 @@
       width: 100%;
       height: 100%;
       overflow: auto;
-      background-color: $purpurColor;
+      background-color: $greenColor;
       transition: all 0.3s;
       &::before {
         content: "";
@@ -105,13 +128,12 @@
 
   &__link {
     color: $mainColor;
-    font-family: "Inter";
-    font-size: toRem(16);
-    font-style: normal;
-    font-weight: 500;
-    line-height: math.div(19, 16);
+    font-family: $fontSecond;
+    font-weight: 400;
+    line-height: math.div(22, 18);
+    transition: all 0.3s;
     &:hover {
-      color: $purpurColor;
+      color: $greenColor;
     }
     @media (max-width: $mobile) {
       color: #fff;
