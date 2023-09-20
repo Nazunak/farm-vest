@@ -39,7 +39,7 @@ $minWidth: 320;
 // Ширина полотна (макету)
 $maxWidth: 1920;
 // Ширина обмежуючого контейнера (0 = немає обмеження)
-$maxWidthContainer: 1390;
+$maxWidthContainer: 1620;
 // Загальний відступ у контейнера
 // (30 = по 15px ліворуч і праворуч, 0 = немає відступу)
 $containerPadding: 30;
@@ -104,9 +104,15 @@ body {
 Наприклад header__container, main__container і т.п.
 Сніппет (HTML): cnt
 */
+
+[class*="__container"] {
+  max-width: toRem(1420);
+  margin: 0 auto;
+}
+
 @if ($responsiveType==1) {
   // Чуйна
-  [class*="__container"] {
+  [class*="__container-big"] {
     @if ($maxWidthContainer>0) {
       max-width: toRem($containerWidth);
       margin: 0 auto;

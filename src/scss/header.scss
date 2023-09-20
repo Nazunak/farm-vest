@@ -1,10 +1,16 @@
 //====================================================================================================
 .header {
+  @include adaptiveValue("padding-top", 60, 10);
+  @include adaptiveValue("padding-bottom", 60, 10);
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
   z-index: 100;
+  &__container-big {
+    display: flex;
+    align-items: center;
+  }
   &__container {
     display: flex;
     justify-content: space-between;
@@ -33,6 +39,7 @@
   }
 
   &__menu {
+    flex: 1 1 auto;
   }
 
   &__actions {
@@ -42,62 +49,45 @@
   }
 
   &__button {
-    display: flex;
-    padding: toRem(13) toRem(25);
-    justify-content: center;
-    align-items: center;
-    background-color: $greenColor;
+    // margin-right: toRem(20);
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
     // border: toRem(1) solid #f1f1f1;
-    border-radius: toRem(10);
-    font-size: toRem(18);
-    line-height: math.div(22, 18);
-    transition: all 0.3s;
-    position: relative;
-    z-index: 5;
     &:hover {
-      background-color: #61d161;
-      color: #fff;
-    }
-    &_trans {
-      background-color: $backgroundColor;
-      border: toRem(1) solid #f1f1f1;
-      @media (any-hover: hover) {
-        &:hover {
-          background-color: $greenColor;
-        }
-      }
-    }
-    @media (max-width: $mobile) {
-      background-color: #ffffff;
-      color: $backgroundColor;
-      padding: toRem(10) toRem(15);
     }
   }
 }
 
 .menu {
+  padding: 0 toRem(10);
   &__icon {
   }
   // вигляд меню бургера при адаптиві
   &__body {
-    @media (max-width: $mobile) {
+    @media (max-width: em(893)) {
       position: fixed;
       top: 0;
       left: -100%;
       width: 100%;
       height: 100%;
       overflow: auto;
-      background-color: $greenColor;
+      background-color: #354953;
       transition: all 0.3s;
+      display: flex;
+      align-items: flex-end;
+      flex-direction: column;
+      gap: toRem(15);
       &::before {
         content: "";
         position: fixed;
         top: 0;
         left: -100%;
         width: 100%;
-        height: toRem(60);
+        // @include adaptiveValue("height", 105, 50, 893, 320, 2);
         transition: all 0.3s;
-        background-color: #b7b2ec;
+        background-color: #354953;
+        // background-color: #233036;
         z-index: 2;
       }
       .menu-open & {
@@ -112,12 +102,13 @@
   &__list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     row-gap: toRem(5);
-    @include adaptiveValue("column-gap", 56, 15, 0, 1200, 768);
-    @media (max-width: $mobile) {
+    @include adaptiveValue("column-gap", 44, 15);
+    @media (max-width: em(893)) {
       flex-direction: column;
       text-align: right;
-      padding-top: toRem(90);
+      padding-top: toRem(120);
       padding-right: toRem(20);
       row-gap: toRem(15);
     }
@@ -135,7 +126,7 @@
     &:hover {
       color: $greenColor;
     }
-    @media (max-width: $mobile) {
+    @media (max-width: em(893)) {
       color: #fff;
       font-size: toRem(32);
     }
@@ -150,7 +141,7 @@
 
 .icon-menu {
   display: none;
-  @media (max-width: $mobile) {
+  @media (max-width: em(893)) {
     display: block;
     position: relative;
     width: toRem(30);
@@ -169,7 +160,7 @@
       position: absolute;
       width: 100%;
       height: toRem(2);
-      background-color: #000;
+      background-color: #fff;
     }
     &::before {
       top: 0;
