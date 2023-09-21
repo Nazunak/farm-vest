@@ -1,6 +1,15 @@
 //<FORM>
 // Сніппет (HTML):
 .form {
+  max-width: toRem(533);
+  background-color: #fff;
+  border-radius: toRem(10);
+  display: flex;
+  padding: toRem(6);
+  gap: toRem(5);
+  @media (max-width: em(430)) {
+    flex-direction: column;
+  }
   &__row {
   }
   &__column {
@@ -8,6 +17,16 @@
   &__line {
   }
   &__input {
+    height: toRem(64);
+    flex: 1 1 auto;
+    padding: 0 toRem(25);
+    font-size: toRem(18);
+    font-weight: 500;
+    line-height: math.div(20, 18);
+    color: $backgroundColor;
+    &::placeholder {
+      color: $backgroundColor;
+    }
   }
   &__button {
   }
@@ -22,7 +41,7 @@
 
 // <INPUTS>
 // Сніппет (HTML): inp
-// @import "input";
+@import "input";
 
 // <CHECK>
 // Сніппет (HTML): chk

@@ -8,19 +8,25 @@
   left: 0;
   z-index: 100;
   &__container-big {
-    display: flex;
+    display: grid;
+    grid-template-columns: toRem(330) 1fr toRem(330);
+    // display: flex;
+    // justify-content: space-between;
     align-items: center;
-  }
-  &__container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: toRem(15);
-    min-height: toRem(123);
-    @media (max-width: $mobile) {
-      min-height: toRem(60);
+    @media (max-width: em(1080)) {
+      grid-template-columns: auto 1fr auto;
     }
   }
+  // &__container {
+  //   display: flex;
+  //   justify-content: space-between;
+  //   align-items: center;
+  //   gap: toRem(15);
+  //   min-height: toRem(123);
+  //   @media (max-width: $mobile) {
+  //     min-height: toRem(60);
+  //   }
+  // }
 
   &__logo {
     position: relative;
@@ -36,16 +42,36 @@
         color: $greenColor;
       }
     }
+    &::before,
+    &::after {
+      pointer-events: none;
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid #fff;
+      top: 0;
+      left: 0;
+      @include adaptiveValue("width", 585, 350);
+      @include adaptiveValue("height", 585, 350);
+    }
+    &::before {
+      top: 0;
+      transform: translate(calc(-50% - toRem(28)), -50%);
+    }
+    &::after {
+      top: 0;
+      transform: translate(calc(-50% + toRem(27)), calc(-50% - toRem(55)));
+    }
   }
 
   &__menu {
-    flex: 1 1 auto;
   }
 
   &__actions {
     display: flex;
     align-items: center;
-    @include adaptiveValue("gap", 16, 5);
+    justify-content: flex-end;
+    @include adaptiveValue("gap", 16, 10);
   }
 
   &__button {
@@ -78,6 +104,7 @@
       align-items: flex-end;
       flex-direction: column;
       gap: toRem(15);
+      padding-right: toRem(20);
       &::before {
         content: "";
         position: fixed;
@@ -107,9 +134,10 @@
     @include adaptiveValue("column-gap", 44, 15);
     @media (max-width: em(893)) {
       flex-direction: column;
+      justify-content: center;
       text-align: right;
       padding-top: toRem(120);
-      padding-right: toRem(20);
+
       row-gap: toRem(15);
     }
   }

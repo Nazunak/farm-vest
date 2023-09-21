@@ -20,7 +20,7 @@
     }
   }
   &_burger {
-    margin-right: toRem(20);
+    // margin-right: toRem(20);
   }
   &_border {
     background-color: transparent;
@@ -33,7 +33,7 @@
       }
     }
   }
-  @media (max-width: em(893)) {
+  @media (max-width: em(1080)) {
     padding: toRem(10) toRem(15);
   }
   &--fw {
