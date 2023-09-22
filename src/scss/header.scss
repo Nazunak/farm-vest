@@ -7,6 +7,7 @@
   top: 0;
   left: 0;
   z-index: 100;
+  transition: all 0.3s;
   &__container-big {
     display: grid;
     grid-template-columns: toRem(330) 1fr toRem(330);
@@ -16,6 +17,11 @@
     @media (max-width: em(1080)) {
       grid-template-columns: auto 1fr auto;
     }
+  }
+  &._header-scroll {
+    padding-top: toRem(20);
+    padding-bottom: toRem(20);
+    background-color: rgba(0, 0, 0, 0.6);
   }
   // &__container {
   //   display: flex;
@@ -41,26 +47,6 @@
       &:hover {
         color: $greenColor;
       }
-    }
-    &::before,
-    &::after {
-      pointer-events: none;
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid #fff;
-      top: 0;
-      left: 0;
-      @include adaptiveValue("width", 585, 350);
-      @include adaptiveValue("height", 585, 350);
-    }
-    &::before {
-      top: 0;
-      transform: translate(calc(-50% - toRem(28)), -50%);
-    }
-    &::after {
-      top: 0;
-      transform: translate(calc(-50% + toRem(27)), calc(-50% - toRem(55)));
     }
   }
 
