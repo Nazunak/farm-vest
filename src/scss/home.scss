@@ -1,4 +1,3 @@
-//====================================================================================================
 //main-section====================================================================================================
 
 .main-section {
@@ -157,17 +156,21 @@
 //========================================================================================================================================================
 
 .how {
+  @include adaptiveValue("padding-bottom", 100, 25);
   &__container {
     padding: 0 toRem(15);
     display: grid;
-
     @include adaptiveValue("gap", 96, 30);
-    @media (min-width: em(1260)) {
+    @media (min-width: $tablet) {
       grid-template-columns: 1fr percent(750, 1420);
     }
   }
 
   &__content {
+    // @include adaptiveValue("padding-right", 95, 30, 1420, 992, 2);
+    @media (max-width: em(374)) {
+      text-align: center;
+    }
   }
 
   &__title {
@@ -186,7 +189,6 @@
   }
 
   &__picture {
-    align-self: start;
   }
 }
 .title {
@@ -202,6 +204,11 @@
     display: flex;
     gap: toRem(32);
     align-items: center;
+    @media (max-width: em(374)) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   &__picture {
@@ -212,6 +219,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: toRem(110);
   }
 
   &__body {
@@ -228,11 +236,104 @@
 
   &__text {
     max-width: toRem(270);
+    line-height: 1.8;
   }
 }
 
 .how {
   &__image {
+  }
+}
+
+//========================================================================================================================================================
+
+.pathway {
+  @include adaptiveValue("padding-top", 100, 25);
+  @include adaptiveValue("padding-bottom", 100, 25);
+  &__container-big {
+  }
+
+  &__container {
+    padding: 0 toRem(15);
+    display: flex;
+    @include adaptiveValue("gap", 96, 30);
+    @media (max-width: $tablet) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__image {
+    flex: 0 0 percent(694, 1420);
+  }
+
+  &__content {
+    flex: 1 1 auto;
+  }
+
+  &__title {
+    &:not(:last-child) {
+      @include adaptiveValue("margin-bottom", 30, 20);
+    }
+  }
+
+  &__text {
+    &:not(:last-child) {
+      @include adaptiveValue("margin-bottom", 48, 30);
+    }
+  }
+
+  &__spollers {
+    display: grid;
+    gap: toRem(24);
+  }
+}
+
+.spollers-pathway {
+  cursor: pointer;
+  &__item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: toRem(10);
+    overflow: hidden;
+  }
+
+  &__title {
+    width: 100%;
+    display: block;
+    text-align: left;
+    padding: toRem(24) toRem(30);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: toRem(10);
+    font-weight: 400;
+    line-height: 1.77;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    @include adaptiveValue("font-size", 24, 18);
+    gap: toRem(10);
+    &::after {
+      content: "";
+      background: url("@img/pathway/arrow-down.svg") center / 100% no-repeat;
+      flex: 0 0 toRem(20);
+      height: toRem(24);
+      transition: all 0.3s;
+    }
+    &._spoller-active {
+      &::after {
+        transform: rotate(-180deg);
+      }
+    }
+    @media (max-width: $mobileSmall) {
+      line-height: 130%;
+      padding: toRem(18) toRem(20);
+    }
+  }
+
+  &__body {
+    padding: toRem(0) toRem(30) toRem(24) toRem(30);
+    @media (max-width: $mobileSmall) {
+      padding: toRem(0) toRem(20) toRem(18) toRem(20);
+    }
   }
 }
 
